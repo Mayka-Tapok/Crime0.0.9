@@ -7,6 +7,9 @@ module.exports = (client) => {
                 switch (cmd) {
                     case 'help':
                         require('../commands/prefix_commands/help')(message, client);
+                        return
+                    case 'server':
+                        require('../commands/prefix_commands/server')(message.guild, message)
                 }
             })
 }

@@ -1,8 +1,8 @@
 const {EmbedBuilder} = require("discord.js");
-const fs = require("fs");
 module.exports = (message, client) => {
     const PrefixCommands = [
         {name: "help", description:"Это команда отправляет сообщение, которое содержит в себе список всех команд"},
+        {name: "server", description:"Команда отправляет информацию о сервере(не активна)"},
     ]
 
     const HelpEmbed = new EmbedBuilder()
