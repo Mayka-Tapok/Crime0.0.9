@@ -1,0 +1,14 @@
+{
+  "name": "crime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Client.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Mayki, DevTapok",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.7.1"
+  }
+}
