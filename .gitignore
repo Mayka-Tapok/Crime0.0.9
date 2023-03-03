@@ -42,3 +42,5 @@ out/
 # Cache
 .prettiercache
 .eslintcache
+#config
+.json
