@@ -26,7 +26,6 @@ module.exports = {
             }
         }else{
             interaction.reply({content: "You are not a developer", ephemeral: true})
-            console.log(interaction.client.user, interaction.client.user.isOwn)
         }
     },
 };
