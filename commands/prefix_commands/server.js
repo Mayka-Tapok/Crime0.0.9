@@ -1,5 +1,8 @@
 const {EmbedBuilder} = require("discord.js");
-
+const data = {
+    name: "help",
+    description: "none"
+}
 module.exports = (guild, message) => {
     const ServerEmbed = new EmbedBuilder()
         .setTitle('Server info')
