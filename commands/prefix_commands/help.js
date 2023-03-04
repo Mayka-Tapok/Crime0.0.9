@@ -17,7 +17,7 @@ module.exports = (message, client) => {
 
     const HelpEmbed = new EmbedBuilder()
         .setTitle('Помощник')
-        .setDescription("Подо мной вы увидите доступные для использования команды")
+        .setDescription("Ниже вы увидите доступные команды")
         .setColor("DarkGold")
         .setAuthor({name:client.user.username,iconURL: client.user.avatarURL()})
     for (const file of commandFiles) {
