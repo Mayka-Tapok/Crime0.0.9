@@ -2,7 +2,6 @@ module.exports = (client, cmd) => {
     client
         .on('interactionCreate', async interaction =>{
             if (!interaction.isChatInputCommand()) return;
-
             const command = cmd.get(interaction.commandName);
             if (!command) {
                 console.error(`No command matching ${interaction.commandName} was found.`);
