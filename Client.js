@@ -1,11 +1,5 @@
-{/*
-        UPDATE 0.0.3
-                Архитектура, свзь команд и ивентов
-                Архитектура, свзь команд и ивентов
-
-*/}
 const API = require('discord.js')
-const {Client, GatewayIntentBits, Collection} = require('discord.js')
+const {Client, GatewayIntentBits, Collection, ActivityType} = require('discord.js')
 
 const {token} = require('./config.json')
 
@@ -17,7 +11,15 @@ const client = new Client({ intents: [
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildMembers,
-]})
+],
+        presence: {
+                activites: [{
+                        type: ActivityType.Watching, // you need to import it
+                        name: 'Netflix and chill'
+                }]
+}
+})
+
 
 client.commands = new Collection();
 
@@ -33,6 +35,7 @@ for (const file of commandFiles) {
                 console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
         }
 }
+
 
 
 require('./events')(client, client.commands, commandFiles)

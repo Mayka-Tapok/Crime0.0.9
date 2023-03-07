@@ -45,15 +45,19 @@ module.exports = (interaction) => {
             row.setComponents(wbtn)
         }
         else if(i.customId === '_losebtn'){
-
             Embed
                 .addFields({name: 'Результат', value: "Lose"})
                 .setColor("Red")
             lbtn.setDisabled(true)
             row.setComponents(lbtn)
         }
+
         await i.update({embeds:[Embed],content:`***<@${interaction.member.id}> отправил отчет о нападении на поставку ${interaction.options.getSubcommand().toUpperCase()}***`, components: [row]})
+        const NEmbed = new EmbedBuilder()
+            .setDescription('***Если вы хотите добавить комментарий к вашему отчету, просто отправьте его дополнительным сообщением***')
+        await interaction.followUp({embeds: [NEmbed], ephemeral: true})
     });
+
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
 
 }
