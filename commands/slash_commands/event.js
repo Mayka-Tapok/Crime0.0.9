@@ -31,14 +31,38 @@ module.exports = {
                         .setDescription('напишите кол-во авто нужных вам')
                         .setRequired(true)
                 )
+        )
+        .addSubcommand(
+            new SlashCommandSubcommandBuilder()
+                .setName('skin')
+                .setDescription('[Events] запрос на выдачу скина для мероприятия(от администрации)')
+                .addStringOption(option =>
+                    option
+                        .setName('ссылка')
+                        .setDescription('отправьте ссылку на мероприятие')
+                        .setRequired(true)
+                )
+                .addIntegerOption(option =>
+                    option
+                        .setName('ид')
+                        .setDescription('ID в игре того, кому нужно выдать скин')
+                        .setRequired(true)
+                )
+                .addStringOption(option =>
+                    option
+                        .setName('скин')
+                        .setDescription('название скина')
+                        .setRequired(true)
+                )
         ),
 
     async execute(interaction) {
             switch(interaction.options.getSubcommand()) {
                 case('vehicle'):
-                    const adminrole = "1082620880619831327"
-                    require('./event/vehicle')(interaction, adminrole)
+                    require('./event/vehicle')(interaction)
                     return;
+                case('skin'):
+                    require('./event/skin')(interaction)
             }
     }
 }

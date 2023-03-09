@@ -3,8 +3,7 @@ const {EmbedBuilder, ButtonBuilder, ActionRowBuilder} = require("discord.js");
 module.exports = (interaction) => {
     const ID = interaction.options.getInteger('ид')
     const URL = interaction.options.getString('ссылка')
-    const count = interaction.options.getInteger('количество')
-    const cars = interaction.options.getString('транспорт')
+    const skin = interaction.options.getString('скин')
 
     const wbtn = new ButtonBuilder()
         .setCustomId('_winbtn')
@@ -20,9 +19,7 @@ module.exports = (interaction) => {
         .setDescription("Администрация обязуется отреагрировать на запрос и выдать авто")
         .addFields(
             {name: "ID игрока", value:`${ID}`},
-            {name: "Машины", value: `${cars}`},
-            {name: "Кол-во", value: `${count}`},
-        )
+            {name: "Машины", value: `${skin}`},)
     if (URL.includes('http')) {
         Embed.setURL(`${URL}`)
     } else {
@@ -33,18 +30,18 @@ module.exports = (interaction) => {
     const collector = interaction.channel.createMessageComponentCollector();
 
     collector.on('collect', async i => {
-                if (!i.member.roles.cache.has("1082620880619831327")) {
-                    i.reply({content: 'Вы не можете нажимать на это!', ephemeral: true})
-                    return;
-                }
-                if (i.customId === '_winbtn') {
-                    Embed
-                        .addFields({name: 'Подтверждено', value: `Администратором <@${i.member.id}>`})
-                        .setColor("Green")
-                    wbtn.setDisabled(true)
-                    row.setComponents(wbtn)
-                }
-                i.update({embeds: [Embed], component: [row]})
+        if (!i.member.roles.cache.has("1082620880619831327")) {
+            i.reply({content: 'Вы не можете нажимать на это!', ephemeral: true})
+            return;
+        }
+        if (i.customId === '_winbtn') {
+            Embed
+                .addFields({name: 'Подтверждено', value: `Администратором <@${i.member.id}>`})
+                .setColor("Green")
+            wbtn.setDisabled(true)
+            row.setComponents(wbtn)
+        }
+        i.update({embeds: [Embed], component: [row]})
     })
     collector.on('end', collected => console.log(`Collected ${collected.size} items`));
 }
